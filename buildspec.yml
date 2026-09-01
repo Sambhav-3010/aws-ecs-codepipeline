@@ -10,11 +10,11 @@ phases:
   build:
     commands:
       - echo "Building Docker image..."
-      - docker build -t "$ECR_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION" .
+      - docker build -t "$ECR_URI:latest" .
       - echo "Pushing Docker image..."
-      - docker push "$ECR_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION"
+      - docker push "$ECR_URI:latest"
       - echo "Creating imagedefinitions.json..."
-      - printf '[{"name":"lab5-app","imageUri":"%s"}]' "$ECR_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION" > imagedefinitions.json
+      - printf '[{"name":"lab5-app","imageUri":"%s"}]' "$ECR_URI:latest" > imagedefinitions.json
 
 artifacts:
   files:
